@@ -54,22 +54,11 @@ public class Canvas {
     /**
      * Печатаем содержимое холста на экран.
      */
-    void print() {
-        System.out.println();
-
-        for (int i = 0; i < height + 2; i++) {
-            for (int j = 0; j < width + 2; j++) {
-                System.out.print(" ");
-                System.out.print(matrix[i][j]);
-                System.out.print(" ");
-            }
-
-            System.out.println();
+    public void print() {
+        if (KeyboardObserver.frame != null) {
+            KeyboardObserver.frame.setContentPane(new Layer(matrix));
+            KeyboardObserver.frame.setVisible(true);
         }
-
-        System.out.println();
-        System.out.println();
-        System.out.println();
     }
 
     public int getWidth() {

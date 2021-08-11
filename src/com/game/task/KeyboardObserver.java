@@ -12,7 +12,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 public class KeyboardObserver extends Thread {
     private Queue<KeyEvent> keyEvents = new ArrayBlockingQueue<KeyEvent>(100);
 
-    private JFrame frame;
+    static JFrame frame;
 
     @Override
     public void run() {
@@ -20,13 +20,14 @@ public class KeyboardObserver extends Thread {
         frame.setTitle("Transparent JFrame Demo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        frame.setUndecorated(true);
-        frame.setSize(400, 400);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setUndecorated(false);
+        frame.setSize((Arkanoid.game.getWidth() * 20) + 55, (Arkanoid.game.getHeight() * 20) + 85);
+        frame.setLocationRelativeTo(null);
+        //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setLayout(new GridBagLayout());
 
-        frame.setOpacity(0.0f);
-        frame.setVisible(true);
+        //frame.setOpacity(0.0f);
+        //frame.setVisible(true);
 
         frame.addFocusListener(new FocusListener() {
             @Override
